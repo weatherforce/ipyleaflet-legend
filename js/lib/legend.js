@@ -21,8 +21,9 @@ const ipyleaflet = require('jupyter-leaflet');
 
 // When serialiazing the entire widget state for embedding, only values that
 // differ from the defaults will be specified.
-var LegendModel = widgets.DOMWidgetModel.extend({
-    defaults: _.extend(widgets.DOMWidgetModel.prototype.defaults(), {
+let LegendModel = new ipyleaflet.LeafletControlModel.extend({
+//var LegendModel = widgets.DOMWidgetModel.extend({
+    defaults: _.extend(ipyleaflet.LeafletControlModel.prototype.defaults(), {
         _model_name : 'LegendModel',
         _view_name : 'LegendView',
         _model_module : 'jupyter-widget-legend',
@@ -35,7 +36,8 @@ var LegendModel = widgets.DOMWidgetModel.extend({
 
 
 // Custom View. Renders the widget model.
-var LegendView = widgets.DOMWidgetView.extend({
+let LegendView = ipyleaflet.LeafletControlView.extend({
+//var LegendView = widgets.DOMWidgetView.extend({
     // Defines how the widget gets rendered into the DOM
     render: function() {
         this.value_changed();
@@ -44,10 +46,21 @@ var LegendView = widgets.DOMWidgetView.extend({
         // a custom callback.
         this.model.on('change:value', this.value_changed, this);
     },
-
     value_changed: function() {
-        this.el.textContent = this.model.get('value');
-    }
+		if(this.obj) this.obj.remove()
+		this.obj = L.control({position: 'bottomright'})
+		this.obj.onAdd = this.onAdd()
+		this.obj.addTo(this.map_view)
+    },
+	onAdd: function(map){
+		let div = L.DomUtil.create('div', 'info legend'),
+			grades = [0, 10, 100],
+			labels = []
+
+		for (let i=0; i < grades.length; i++){
+			div.innerHTML += '<i style="background: blue"></i> toto'
+		}
+	}
 });
 
 
