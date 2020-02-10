@@ -1,0 +1,75 @@
+Arguments: 
+  /usr/bin/node /usr/share/yarn/bin/yarn.js init
+
+PATH: 
+  /home/tomtom/weatherforce/Projects/venv/bin:/home/tomtom/.npm-packages/bin:/home/tomtom/bin:/home/tomtom/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/tomtom/Android/Sdk/tools:/home/tomtom/Android/Sdk/platform-tools:/home/tomtom/dev/android-studio/bin:/home/tomtom/dev/flutter/bin
+
+Yarn version: 
+  1.21.1
+
+Node version: 
+  11.15.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (/usr/share/yarn/lib/cli.js:136925:13)
+      at Interface.emit (events.js:193:13)
+      at Interface._ttyWrite (readline.js:826:16)
+      at ReadStream.onkeypress (readline.js:183:10)
+      at ReadStream.emit (events.js:193:13)
+      at emitKeys (internal/readline.js:424:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (readline.js:1097:36)
+      at ReadStream.emit (events.js:193:13)
+      at addChunk (_stream_readable.js:295:12)
+
+npm manifest: 
+  {
+    "name": "jupyter-widget-legend",
+    "version": "0.1.0",
+    "description": "A custom legend based on this example https://leafletjs.com/examples/choropleth/",
+    "author": "Thomas Pouvreau",
+    "main": "lib/index.js",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/weatherforce/jupyter-widget-legend.git"
+    },
+    "keywords": [
+      "jupyter",
+      "widgets",
+      "ipython",
+      "ipywidgets",
+      "jupyterlab-extension"
+    ],
+    "files": [
+      "lib/**/*.js",
+      "dist/*.js"
+    ],
+    "scripts": {
+      "clean": "rimraf dist/",
+      "prepublish": "webpack",
+      "build": "webpack",
+      "watch": "webpack --watch --mode=development",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "devDependencies": {
+      "webpack": "^3.5.5",
+      "rimraf": "^2.6.1"
+    },
+    "dependencies": {
+      "@jupyter-widgets/base": "^1.1 || ^2",
+      "lodash": "^4.17.4"
+    },
+    "jupyterlab": {
+      "extension": "lib/labplugin"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
