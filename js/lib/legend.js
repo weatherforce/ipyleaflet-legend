@@ -19,21 +19,21 @@ var _ = require('lodash');
 
 // When serialiazing the entire widget state for embedding, only values that
 // differ from the defaults will be specified.
-var HelloModel = widgets.DOMWidgetModel.extend({
+var LegendModel = widgets.DOMWidgetModel.extend({
     defaults: _.extend(widgets.DOMWidgetModel.prototype.defaults(), {
-        _model_name : 'HelloModel',
-        _view_name : 'HelloView',
+        _model_name : 'LegendModel',
+        _view_name : 'LegendView',
         _model_module : 'jupyter-widget-legend',
         _view_module : 'jupyter-widget-legend',
         _model_module_version : '0.1.0',
         _view_module_version : '0.1.0',
-        value : 'Hello World!'
+        value : 'Legend World!'
     })
 });
 
 
 // Custom View. Renders the widget model.
-var HelloView = widgets.DOMWidgetView.extend({
+var LegendView = widgets.DOMWidgetView.extend({
     // Defines how the widget gets rendered into the DOM
     render: function() {
         this.value_changed();
@@ -50,6 +50,6 @@ var HelloView = widgets.DOMWidgetView.extend({
 
 
 module.exports = {
-    HelloModel: HelloModel,
-    HelloView: HelloView
+    LegendModel: LegendModel,
+    LegendView: LegendView
 };
