@@ -4,6 +4,7 @@ dist/
 build/
 *.py[cod]
 node_modules/
+.ropeproject/
 
 # Compiled javascript
 jupyter_widget_legend/static/
