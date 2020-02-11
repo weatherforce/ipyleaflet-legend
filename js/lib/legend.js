@@ -5,17 +5,25 @@ const ipyleaflet = require('jupyter-leaflet');
 
 
 let jsLegend = L.control({position: "bottomright"})
+
 jsLegend.onAdd = function(map){
+
 	let jsLegendName="leaflet-control-legend"
 	let container = L.DomUtil.create('div', jsLegendName),
-	grades = ["#F00", "#0F0", "#00F"],
-	labels = []
+
+	grades = ["#005", "#55A", "#AAF"],
+	labels = ["ouf", "moyen ouf", "pas ouf" ]
+
+	let title = document.createElement('h4')
+	title.style = "padding: 0; margin: 0; margin-bottom: 5px"
+	title.textContent = "Legendaire"
+	container.appendChild(title)
 
 	for (let i=0; i < grades.length; i++){
 		let icon = document.createElement("i")
 		icon.style = `background-color: ${grades[i]}; width: 18px; height: 18px; float: left; margin-right: 8px; opacity:0.7`
 		container.appendChild(icon)
-		container.innerHTML += `<p style="display: inline-block"> toto</p></br>`
+		container.innerHTML += `<p style="display: inline-block">${labels[i]} </p></br>`
 		container.style = "color: #555; line-height: 18px; width: auto; background-color: #fff; padding: 5px; border-radius: 5px; box-shadow: 0 1px 5px rgba(0,0,0,0.4); padding: 6px 10px 6px 6px; "
 	
 	}
