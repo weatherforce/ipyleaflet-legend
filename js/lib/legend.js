@@ -8,11 +8,16 @@ let jsLegend = L.control({position: "bottomright"})
 jsLegend.onAdd = function(map){
 	let jsLegendName="leaflet-control-legend"
 	let container = L.DomUtil.create('div', jsLegendName),
-	grades = [0, 10, 100],
+	grades = ["#F00", "#0F0", "#00F"],
 	labels = []
 
 	for (let i=0; i < grades.length; i++){
-		container.innerHTML += '<i style="background: \"blue\""></i> toto'
+		let icon = document.createElement("i")
+		icon.style = `background-color: ${grades[i]}; width: 18px; height: 18px; float: left; margin-right: 8px; opacity:0.7`
+		container.appendChild(icon)
+		container.innerHTML += `<p style="display: inline-block"> toto</p></br>`
+		container.style = "color: #555; line-height: 18px; width: auto; background-color: #fff; padding: 5px; border-radius: 5px; box-shadow: 0 1px 5px rgba(0,0,0,0.4); padding: 6px 10px 6px 6px; "
+	
 	}
 	return container
 
