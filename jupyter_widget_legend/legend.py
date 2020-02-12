@@ -29,12 +29,17 @@ class Legend(widgets.DOMWidget):
     # is automatically synced to the frontend *any* time it changes in Python.
     # It is synced back to Python from the frontend *any* time the model is
     # touched.
-    title = Unicode('Legendaire').tag(sync=True)
+    title = Unicode('Legend').tag(sync=True)
     position = Unicode('bottomright').tag(sync=True)
     legend = Dict(default_value={
-        "pas ouf": "#AAF",
-        "moyen ouf": "#55A",
-        "ouf": "#005"}).tag(sync=True)
+        "value 1": "#AAF",
+        "value 2": "#55A",
+        "value 3": "#005"}).tag(sync=True)
+
+    def __init__(self, legend, *args, name="Legend", **kwargs):
+        super().__init__(*args, **kwargs)
+        self.title = name
+        self.legend = legend
 
     @property
     def name(self):
@@ -61,4 +66,12 @@ class Legend(widgets.DOMWidget):
     @positionning.setter
     def positionning(self, position):
         self.position = position
+        self.send_state()
+
+    def add_legend_element(self, key, value):
+        self.legend[key] = value
+        self.send_state()
+
+    def remove_legend_element(self, key):
+        del self.legend[key]
         self.send_state()
