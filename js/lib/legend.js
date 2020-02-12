@@ -2,6 +2,7 @@ var widgets = require('@jupyter-widgets/base');
 var _ = require('lodash');
 var L = require('leaflet');
 const ipyleaflet = require('jupyter-leaflet');
+import './legend.css'
 
 
 export class LegendModel extends ipyleaflet.LeafletControlModel {
@@ -48,18 +49,15 @@ export class LegendView extends ipyleaflet.LeafletControlView{
 			let jsLegendName="leaflet-control-legend"
 			let container = L.DomUtil.create('div', jsLegendName)
 			let titleContainer = document.createElement('h4')
-
-			titleContainer.style = "padding: 0; margin: 0; margin-bottom: 5px"
 			titleContainer.textContent =  title
 			container.appendChild(titleContainer)
 
 			for ( let legendElement in legend ){
 				let icon = document.createElement("i")
-				icon.style = `background-color: ${legend[legendElement]}; width: 18px; height: 18px; float: left; margin-right: 8px; opacity:0.7`
+				icon.style = `background-color: ${legend[legendElement]}`
 				container.appendChild(icon)
-				container.innerHTML += `<p style="display: inline-block">${legendElement} </p></br>`
-				container.style = "color: #555; line-height: 18px; width: auto; background-color: #fff; padding: 5px; border-radius: 5px; box-shadow: 0 1px 5px rgba(0,0,0,0.4); padding: 6px 10px 6px 6px; "
-	
+				container.innerHTML += `<p>${legendElement} </p></br>`
+
 			}
 			return container
 		}
