@@ -6,8 +6,6 @@ build/
 node_modules/
 .ropeproject/
 
-# Compiled javascript
-jupyter_widget_legend/static/
 
 # OS X
 .DS_Store
