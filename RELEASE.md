@@ -1,4 +1,4 @@
-- To release a new version of jupyter_widget_legend on PyPI:
+- To release a new version of ipyleaflet_legend on PyPI:
 
 Update _version.py (set release version, remove 'dev')
 git add the _version.py file and git commit
