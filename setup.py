@@ -66,8 +66,8 @@ class NPM(Command):
     node_modules = os.path.join(node_root, 'node_modules')
 
     targets = [
-        os.path.join(here, 'jupyter_widget_legend', 'static', 'extension.js'),
-        os.path.join(here, 'jupyter_widget_legend', 'static', 'index.js')
+        os.path.join(here, 'ipyleaflet_legend', 'static', 'extension.js'),
+        os.path.join(here, 'ipyleaflet_legend', 'static', 'index.js')
     ]
 
     def initialize_options(self):
@@ -80,9 +80,9 @@ class NPM(Command):
         npmName = 'npm';
         if platform.system() == 'Windows':
             npmName = 'npm.cmd';
-            
+
         return npmName;
-    
+
     def has_npm(self):
         npmName = self.get_npm_name();
         try:
@@ -121,22 +121,22 @@ class NPM(Command):
         update_package_data(self.distribution)
 
 version_ns = {}
-with open(os.path.join(here, 'jupyter_widget_legend', '_version.py')) as f:
+with open(os.path.join(here, 'ipyleaflet_legend', '_version.py')) as f:
     exec(f.read(), {}, version_ns)
 
 setup_args = {
-    'name': 'jupyter_widget_legend',
+    'name': 'ipyleaflet_legend',
     'version': version_ns['__version__'],
     'description': 'A custom legend based on this example https://leafletjs.com/examples/choropleth/',
     'long_description': LONG_DESCRIPTION,
     'include_package_data': True,
     'data_files': [
         ('share/jupyter/nbextensions/jupyter-widget-legend', [
-            'jupyter_widget_legend/static/extension.js',
-            'jupyter_widget_legend/static/index.js',
-            'jupyter_widget_legend/static/index.js.map',
+            'ipyleaflet_legend/static/extension.js',
+            'ipyleaflet_legend/static/index.js',
+            'ipyleaflet_legend/static/index.js.map',
         ],),
-        ('etc/jupyter/nbconfig/notebook.d' ,['jupyter-widget-legend.json'])
+        ('etc/jupyter/nbconfig/notebook.d' ,['ipyleaflet-legend.json'])
     ],
     'install_requires': [
         'ipywidgets>=7.0.0',
@@ -152,7 +152,7 @@ setup_args = {
 
     'author': 'Thomas Pouvreau',
     'author_email': 'thomas.pouvreau@weatherforce.org',
-    'url': 'https://github.com/weatherforce/jupyter-widget-legend',
+    'url': 'https://github.com/weatherforce/ipyleaflet-legend',
     'keywords': [
         'ipython',
         'jupyter',

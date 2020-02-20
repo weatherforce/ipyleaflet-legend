@@ -27,7 +27,7 @@ module.exports = [
         entry: './lib/extension.js',
         output: {
             filename: 'extension.js',
-            path: path.resolve(__dirname, '..', 'jupyter_widget_legend', 'static'),
+            path: path.resolve(__dirname, '..', 'ipyleaflet_legend', 'static'),
             libraryTarget: 'amd'
         }
     },
@@ -40,7 +40,7 @@ module.exports = [
         entry: './lib/index.js',
         output: {
             filename: 'index.js',
-            path: path.resolve(__dirname, '..', 'jupyter_widget_legend', 'static'),
+            path: path.resolve(__dirname, '..', 'ipyleaflet_legend', 'static'),
             libraryTarget: 'amd'
         },
         devtool: 'source-map',
@@ -68,7 +68,7 @@ module.exports = [
             filename: 'index.js',
             path: path.resolve(__dirname, 'dist'),
             libraryTarget: 'amd',
-            publicPath: 'https://unpkg.com/jupyter-widget-legend@' + version + '/dist/'
+            publicPath: 'https://unpkg.com/ipyleaflet-legend@' + version + '/dist/'
         },
         devtool: 'source-map',
         module: {

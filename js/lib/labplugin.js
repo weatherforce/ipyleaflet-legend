@@ -1,12 +1,12 @@
 var plugin = require('./index');
-var base = require('@jupyter-widgets/base');
+var base = require('@ipyleaflets/base');
 
 module.exports = {
-  id: 'jupyter-widget-legend',
+  id: 'ipyleaflet-legend',
   requires: [base.IJupyterWidgetRegistry],
   activate: function(app, widgets) {
       widgets.registerWidget({
-          name: 'jupyter-widget-legend',
+          name: 'ipyleaflet-legend',
           version: plugin.version,
           exports: plugin
       });

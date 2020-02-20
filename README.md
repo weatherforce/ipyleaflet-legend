@@ -1,4 +1,4 @@
-jupyter-widget-legend
+ipyleaflet-legend
 ===============================
 
 A custom legend based on this example https://leafletjs.com/examples/choropleth/
@@ -8,20 +8,20 @@ Installation
 
 To install use pip:
 
-    $ pip install jupyter_widget_legend
-    $ jupyter nbextension enable --py --sys-prefix jupyter_widget_legend
+    $ pip install ipyleaflet_legend
+    $ jupyter nbextension enable --py --sys-prefix ipyleaflet_legend
 
 To install for jupyterlab
 
-    $ jupyter labextension install jupyter_widget_legend
+    $ jupyter labextension install ipyleaflet_legend
 
 For a development installation (requires npm),
 
-    $ git clone https://github.com/weatherforce/jupyter-widget-legend.git
-    $ cd jupyter-widget-legend
+    $ git clone https://github.com/weatherforce/ipyleaflet-legend.git
+    $ cd ipyleaflet-legend
     $ pip install -e .
-    $ jupyter nbextension install --py --symlink --sys-prefix jupyter_widget_legend
-    $ jupyter nbextension enable --py --sys-prefix jupyter_widget_legend
+    $ jupyter nbextension install --py --symlink --sys-prefix ipyleaflet_legend
+    $ jupyter nbextension enable --py --sys-prefix ipyleaflet_legend
     $ jupyter labextension install js
 
 When actively developing your extension, build Jupyter Lab with the command:
