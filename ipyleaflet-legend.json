@@ -1,0 +1,5 @@
+{
+  "load_extensions": {
+    "ipyleaflet-legend/extension": true
+  }
+}

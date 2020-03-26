@@ -1,2 +1,2 @@
-recursive-include jupyter_widget_legend/static *.*
-include jupyter-widget-legend.json
+recursive-include ipyleaflet_legend/static *.*
+include ipyleaflet-legend.json

@@ -14,7 +14,7 @@ is_repo = os.path.exists(os.path.join(here, '.git'))
 
 npm_path = os.pathsep.join([
     os.path.join(node_root, 'node_modules', '.bin'),
-                os.environ.get('PATH', os.defpath),
+    os.environ.get('PATH', os.defpath),
 ])
 
 from distutils import log
@@ -131,7 +131,7 @@ setup_args = {
     'long_description': LONG_DESCRIPTION,
     'include_package_data': True,
     'data_files': [
-        ('share/jupyter/nbextensions/jupyter-widget-legend', [
+        ('share/jupyter/nbextensions/ipyleaflet-legend', [
             'ipyleaflet_legend/static/extension.js',
             'ipyleaflet_legend/static/index.js',
             'ipyleaflet_legend/static/index.js.map',

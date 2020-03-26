@@ -7,5 +7,5 @@ Package Install
 - [node](http://nodejs.org/)
 
 ```bash
-npm install --save jupyter-widget-legend
+npm install --save ipyleaflet-legend
 ```
