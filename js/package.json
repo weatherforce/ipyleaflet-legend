@@ -2,7 +2,7 @@
   "name": "ipyleaflet-legend",
   "version": "0.1.0",
   "description": "A custom legend based on this example https://leafletjs.com/examples/choropleth/",
-  "author": "Thomas Pouvreau",
+  "author": "WeatherForce",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
