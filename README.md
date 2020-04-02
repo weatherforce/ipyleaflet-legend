@@ -1,7 +1,8 @@
 ipyleaflet-legend
 ===============================
 
-A custom legend based on this example https://leafletjs.com/examples/choropleth/
+A custom legend based on this example https://leafletjs.com/examples/choropleth/.
+It aim to pass a small legend configured as a dictionnary to ipyleaflet as a LeafletControl.
 
 Installation
 ------------

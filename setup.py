@@ -7,6 +7,7 @@ from subprocess import check_call
 import os
 import sys
 import platform
+from distutils import log
 
 here = os.path.dirname(os.path.abspath(__file__))
 node_root = os.path.join(here, 'js')
@@ -17,12 +18,13 @@ npm_path = os.pathsep.join([
     os.environ.get('PATH', os.defpath),
 ])
 
-from distutils import log
 log.set_verbosity(log.DEBUG)
 log.info('setup.py entered')
 log.info('$PATH=%s' % os.environ['PATH'])
 
-LONG_DESCRIPTION = 'A custom legend based on this example https://leafletjs.com/examples/choropleth/'
+with open("README.md", 'r') as f:
+    LONG_DESCRIPTION = f.read()
+
 
 def js_prerelease(command, strict=False):
     """decorator for building minified js/css prior to another command"""
@@ -49,6 +51,7 @@ def js_prerelease(command, strict=False):
             command.run(self)
             update_package_data(self.distribution)
     return DecoratedCommand
+
 
 def update_package_data(distribution):
     """update package_data to catch changes during setup"""
@@ -77,18 +80,18 @@ class NPM(Command):
         pass
 
     def get_npm_name(self):
-        npmName = 'npm';
+        npmName = 'npm'
         if platform.system() == 'Windows':
-            npmName = 'npm.cmd';
+            npmName = 'npm.cmd'
 
-        return npmName;
+        return npmName
 
     def has_npm(self):
-        npmName = self.get_npm_name();
+        npmName = self.get_npm_name()
         try:
             check_call([npmName, '--version'])
             return True
-        except:
+        except Exception:
             return False
 
     def should_run_npm_install(self):
@@ -99,26 +102,31 @@ class NPM(Command):
     def run(self):
         has_npm = self.has_npm()
         if not has_npm:
-            log.error("`npm` unavailable.  If you're running this command using sudo, make sure `npm` is available to sudo")
+            log.error("`npm` unavailable.  If you're running this command \
+                      using sudo, make sure `npm` is available to sudo")
 
         env = os.environ.copy()
         env['PATH'] = npm_path
 
         if self.should_run_npm_install():
-            log.info("Installing build dependencies with npm.  This may take a while...")
-            npmName = self.get_npm_name();
-            check_call([npmName, 'install'], cwd=node_root, stdout=sys.stdout, stderr=sys.stderr)
+            log.info("Installing build dependencies with npm.  This may take a\
+                     while...")
+            npmName = self.get_npm_name()
+            check_call([npmName, 'install'], cwd=node_root, stdout=sys.stdout,
+                       stderr=sys.stderr)
             os.utime(self.node_modules, None)
 
         for t in self.targets:
             if not os.path.exists(t):
                 msg = 'Missing file: %s' % t
                 if not has_npm:
-                    msg += '\nnpm is required to build a development version of a widget extension'
+                    msg += '\nnpm is required to build a development version \
+                        of a widget extension'
                 raise ValueError(msg)
 
         # update package data in case this created new files
         update_package_data(self.distribution)
+
 
 version_ns = {}
 with open(os.path.join(here, 'ipyleaflet_legend', '_version.py')) as f:
@@ -127,7 +135,7 @@ with open(os.path.join(here, 'ipyleaflet_legend', '_version.py')) as f:
 setup_args = {
     'name': 'ipyleaflet_legend',
     'version': version_ns['__version__'],
-    'description': 'A custom legend based on this example https://leafletjs.com/examples/choropleth/',
+    'description': 'A custom legend for ipyleaflet',
     'long_description': LONG_DESCRIPTION,
     'include_package_data': True,
     'data_files': [
@@ -136,7 +144,7 @@ setup_args = {
             'ipyleaflet_legend/static/index.js',
             'ipyleaflet_legend/static/index.js.map',
         ],),
-        ('etc/jupyter/nbconfig/notebook.d' ,['ipyleaflet-legend.json'])
+        ('etc/jupyter/nbconfig/notebook.d', ['ipyleaflet-legend.json'])
     ],
     'install_requires': [
         'ipywidgets>=7.0.0',
@@ -150,7 +158,7 @@ setup_args = {
         'jsdeps': NPM,
     },
 
-    'author': 'Thomas Pouvreau',
+    'author': 'WeatherForce',
     'author_email': 'thomas.pouvreau@weatherforce.org',
     'url': 'https://github.com/weatherforce/ipyleaflet-legend',
     'keywords': [
@@ -164,7 +172,6 @@ setup_args = {
         'Intended Audience :: Developers',
         'Intended Audience :: Science/Research',
         'Topic :: Multimedia :: Graphics',
-        'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
