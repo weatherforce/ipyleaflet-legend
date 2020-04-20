@@ -4,6 +4,7 @@ build/
 *.py[cod]
 node_modules/
 .ropeproject/
+dist/
 
 
 # OS X
