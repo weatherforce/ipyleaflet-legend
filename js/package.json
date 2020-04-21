@@ -4,6 +4,7 @@
   "description": "A custom legend based on this example https://leafletjs.com/examples/choropleth/",
   "author": "WeatherForce",
   "main": "lib/index.js",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/weatherforce/jupyter-widget-legend.git"
