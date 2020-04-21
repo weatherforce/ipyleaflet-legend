@@ -33,4 +33,3 @@ This take a minute or so to get started, but then allows you to hot-reload your 
 To see a change, save your javascript, watch the terminal for an update.
 
 Note on first `jupyter lab --watch`, you may need to touch a file to get Jupyter Lab to open.
-
