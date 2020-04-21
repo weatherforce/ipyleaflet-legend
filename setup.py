@@ -25,6 +25,8 @@ log.info('$PATH=%s' % os.environ['PATH'])
 with open("README.md", 'r') as f:
     LONG_DESCRIPTION = f.read()
 
+print(LONG_DESCRIPTION)
+
 
 def js_prerelease(command, strict=False):
     """decorator for building minified js/css prior to another command"""
@@ -137,6 +139,7 @@ setup_args = {
     'version': version_ns['__version__'],
     'description': 'A custom legend for ipyleaflet',
     'long_description': LONG_DESCRIPTION,
+    'long_description_content_type': 'text/markdown',
     'include_package_data': True,
     'data_files': [
         ('share/jupyter/nbextensions/ipyleaflet-legend', [
@@ -159,7 +162,7 @@ setup_args = {
     },
 
     'author': 'WeatherForce',
-    'author_email': 'thomas.pouvreau@weatherforce.org',
+    'author_email': 'opensource@weatherforce.org',
     'url': 'https://github.com/weatherforce/ipyleaflet-legend',
     'keywords': [
         'ipython',
